@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Работаем24 — Аутсорсинг грузчиков и разнорабочих в Екатеринбурге</title>
+    <!-- Шрифты и иконки -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1E2A41;
+            background: #FFFFFF;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background: #F15A24; /* оранжевый акцент */
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 8px 20px rgba(241, 90, 36, 0.2);
+        }
+        .btn:hover {
+            background: #D94A1A;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(241, 90, 36, 0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #F15A24;
+            color: #F15A24;
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: #F15A24;
+            color: white;
+        }
+
+        /* Шапка */
+        .header {
+            padding: 20px 0;
+            border-bottom: 1px solid #EAF0F6;
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            color: #F15A24;
+        }
+        .header-contacts {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .header-phone {
+            font-weight: 700;
+            font-size: 18px;
+            color: #1E2A41;
+            text-decoration: none;
+        }
+        .header-phone i {
+            color: #F15A24;
+            margin-right: 6px;
+        }
+        .city {
+            color: #5B6F88;
+            font-size: 14px;
+        }
+        .city i {
+            margin-right: 4px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 60px 0 80px;
+            background: linear-gradient(145deg, #F9FCFF 0%, #EEF5FA 100%);
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 48px;
+            align-items: center;
+        }
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        .hero-title .highlight {
+            color: #F15A24;
+            position: relative;
+        }
+        .hero-desc {
+            font-size: 18px;
+            color: #3A4C62;
+            margin-bottom: 32px;
+        }
+        .hero-features {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .hero-feat {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .hero-feat i {
+            font-size: 20px;
+            color: #F15A24;
+            background: rgba(241, 90, 36, 0.1);
+            padding: 8px;
+            border-radius: 50%;
+        }
+        .hero-image {
+            background: #D9E2EC;
+            border-radius: 32px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.1);
+        }
+        .hero-placeholder {
+            font-size: 160px;
+            color: #1E2A41;
+            opacity: 0.7;
+        }
+
+        /* Секции */
+        .section {
+            padding: 80px 0;
+        }
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 56px;
+        }
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .section-subtitle {
+            font-size: 18px;
+            color: #5B6F88;
+        }
+
+        /* Карточки услуг */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .service-card {
+            background: #FFFFFF;
+            border-radius: 24px;
+            padding: 32px 24px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            border: 1px solid #EDF2F7;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(30,42,65,0.15);
+            border-color: #F15A24;
+        }
+        .service-icon {
+            width: 72px;
+            height: 72px;
+            background: rgba(241,90,36,0.08);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: #F15A24;
+            font-size: 34px;
+        }
+        .service-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .service-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #F15A24;
+            margin-top: 20px;
+        }
+        .service-desc {
+            color: #5B6F88;
+            margin-bottom: 8px;
+        }
+
+        /* Этапы работы */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .step-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 28px 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid #E9F0F5;
+            position: relative;
+        }
+        .step-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: rgba(241,90,36,0.15);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        .step-title {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .step-text {
+            color: #5B6F88;
+            font-size: 15px;
+        }
+
+        /* Преимущества */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .feature-item {
+            text-align: left;
+            padding: 16px;
+        }
+        .feature-icon {
+            font-size: 28px;
+            color: #F15A24;
+            margin-bottom: 16px;
+        }
+        .feature-item h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        /* Прайс-лист */
+        .pricing-table {
+            background: #F9FCFF;
+            border-radius: 32px;
+            padding: 40px;
+            border: 1px solid #E1EAF2;
+        }
+        .pricing-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 18px 0;
+            border-bottom: 1px dashed #C7D8E5;
+        }
+        .pricing-row:last-child {
+            border-bottom: none;
+        }
+        .pricing-service {
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .pricing-value {
+            font-weight: 700;
+            color: #F15A24;
+            font-size: 22px;
+        }
+        .pricing-note {
+            margin-top: 24px;
+            color: #5B6F88;
+        }
+
+        /* Калькулятор */
+        .calculator-block {
+            background: linear-gradient(135deg, #1E2A41 0%, #2E3E58 100%);
+            border-radius: 32px;
+            padding: 40px;
+            color: white;
+        }
+        .calculator-title {
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .calc-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #B0C4DE;
+        }
+        .calc-form select, .calc-form input {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 40px;
+            border: none;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .calc-result {
+            background: rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+        }
+        .result-number {
+            font-size: 64px;
+            font-weight: 800;
+            color: #F15A24;
+            line-height: 1.2;
+        }
+        .result-label {
+            color: #B0C4DE;
+            margin-bottom: 8px;
+        }
+        .result-breakdown {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #8FA0B5;
+        }
+
+        /* Клиенты */
+        .clients-logos {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            opacity: 0.7;
+        }
+        .client-logo {
+            font-size: 22px;
+            font-weight: 600;
+            color: #3A4C62;
+            background: #EEF5FA;
+            padding: 12px 28px;
+            border-radius: 60px;
+        }
+
+        /* Контакты + форма */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            background: #1E2A41;
+            border-radius: 40px;
+            padding: 48px;
+            color: white;
+        }
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .contact-detail i {
+            width: 24px;
+            color: #F15A24;
+        }
+        .contact-detail a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .map-placeholder {
+            background: #2E3E58;
+            border-radius: 20px;
+            padding: 16px;
+            margin-top: 20px;
+            text-align: center;
+            color: #B0C4DE;
+        }
+        .contact-form {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            color: #1E2A41;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #D0DDEB;
+            border-radius: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            outline: none;
+            transition: 0.2s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #F15A24;
+            box-shadow: 0 0 0 3px rgba(241,90,36,0.15);
+        }
+        .form-group textarea {
+            border-radius: 24px;
+            resize: vertical;
+        }
+        .form-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Футер */
+        .footer {
+            padding: 32px 0;
+            border-top: 1px solid #E1EAF2;
+            color: #5B6F88;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-links a {
+            color: #1E2A41;
+            text-decoration: none;
+            margin-left: 32px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-image { order: -1; max-width: 500px; margin: 0 auto; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .calc-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 12px; }
+            .header-contacts { flex-wrap: wrap; justify-content: center; }
+            .hero-title { font-size: 36px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .contacts-grid { grid-template-columns: 1fr; padding: 32px 24px; }
+            .footer-content { flex-direction: column; gap: 20px; }
+            .footer-links a { margin: 0 16px; }
+            .pricing-table { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Шапка -->
+<header class="header">
+    <div class="container header-content">
+        <div class="logo"><span>Работаем</span>24</div>
+        <div class="header-contacts">
+            <div class="city"><i class="fas fa-map-marker-alt"></i> Екатеринбург</div>
+            <a href="tel:+73432669383" class="header-phone"><i class="fas fa-phone-alt"></i> +7 (961) 768-01-31</a>
+            <a href="#contact" class="btn" style="padding: 10px 24px;">Заказать звонок</a>
+        </div>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container hero-grid">
+        <div>
+            <h1 class="hero-title">Аутсорсинг <span class="highlight">грузчиков и разнорабочих</span> в Екатеринбурге</h1>
+            <p class="hero-desc">Закроем потребность в персонале за 24 часа. Собственная база проверенных рабочих, официальный договор, замена без простоев.</p>
+            <div class="hero-features">
+                <div class="hero-feat"><i class="fas fa-check-circle"></i> От 500 ₽/час</div>
+                <div class="hero-feat"><i class="fas fa-clock"></i> Выезд через 2 часа</div>
+                <div class="hero-feat"><i class="fas fa-file-contract"></i> Договор и гарантии</div>
+            </div>
+            <a href="#calculator" class="btn">Рассчитать стоимость <i class="fas fa-calculator" style="margin-left: 8px;"></i></a>
+        </div>
+        <div class="hero-image">
+            <div class="hero-placeholder"><i class="fas fa-people-carry"></i></div>
+        </div>
+    </div>
+</section>
+
+<!-- Услуги с ценами (обновлено по рынку 2026) -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Каких специалистов предоставляем</h2>
+            <p class="section-subtitle">Собственный штат, оперативный подбор под задачи любой сложности</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-boxes"></i></div>
+                <div class="service-title">Грузчики</div>
+                <div class="service-desc">Погрузка/разгрузка фур, переезды, такелажные работы</div>
+                <div class="service-price">от 500 ₽/час</div>
+                <div style="font-size: 14px; color: #5B6F88; margin-top: 8px;">НДС не облагается</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+                <div class="service-title">Разнорабочие</div>
+                <div class="service-desc">Строительные, подсобные, демонтажные работы</div>
+                <div class="service-price">от 650 ₽/час</div>
+                <div style="font-size: 14px; color: #5B6F88; margin-top: 8px;">НДС не облагается</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-clipboard-list"></i></div>
+                <div class="service-title">Складской персонал</div>
+                <div class="service-desc">Комплектовщики, упаковщики, стикеровщики</div>
+                <div class="service-price">от 550 ₽/час</div>
+                <div style="font-size: 14px; color: #5B6F88; margin-top: 8px;">НДС не облагается</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- КАЛЬКУЛЯТОР -->
+<section id="calculator" class="section" style="padding-top: 0;">
+    <div class="container">
+        <div class="calculator-block">
+            <h3 class="calculator-title"><i class="fas fa-calculator" style="margin-right: 12px;"></i>Калькулятор стоимости</h3>
+            <div class="calc-grid">
+                <div class="calc-form">
+                    <label>Тип персонала</label>
+                    <select id="calcType">
+                        <option value="500">Грузчик (500 ₽/час)</option>
+                        <option value="650">Разнорабочий (650 ₽/час)</option>
+                        <option value="550">Комплектовщик / Упаковщик (550 ₽/час)</option>
+                    </select>
+                    <label>Количество человек</label>
+                    <input type="number" id="calcPeople" min="1" value="2">
+                    <label>Часов в смене</label>
+                    <input type="number" id="calcHours" min="1" value="8">
+                    <label>Количество смен</label>
+                    <input type="number" id="calcShifts" min="1" value="1">
+                </div>
+                <div class="calc-result">
+                    <div class="result-label">Примерная стоимость</div>
+                    <div class="result-number"><span id="totalPrice">8 000</span> ₽</div>
+                    <div class="result-breakdown" id="breakdown">
+                        2 чел × 8 ч × 1 смена × 500 ₽
+                    </div>
+                    <button class="btn" style="margin-top: 24px; width: 100%;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                        Оставить заявку <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <p style="color: #8FA0B5; margin-top: 20px; font-size: 14px;">
+                <i class="fas fa-info-circle"></i> Минимальная смена — 4 часа. Точная стоимость фиксируется в договоре.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Как мы работаем -->
+<section class="section" style="background: #F9FCFF;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Как мы работаем</h2>
+            <p class="section-subtitle">Прозрачный процесс — от заявки до закрывающих документов</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-title">Заявка</div>
+                <div class="step-text">Оставляете заявку на сайте или по телефону, описываете объем работ</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-title">Подбор</div>
+                <div class="step-text">Подбираем необходимое количество рабочих и бригадира за 24 часа</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-title">Договор</div>
+                <div class="step-text">Заключаем официальный договор, фиксируем ставку и условия</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">04</div>
+                <div class="step-title">Работа и отчёт</div>
+                <div class="step-text">Персонал выходит на объект, мы контролируем, предоставляем документы</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Почему выбирают нас -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Почему «Работаем24»</h2>
+            <p class="section-subtitle">Надёжный партнёр для бизнеса в Екатеринбурге</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-database"></i></div>
+                <h4>Собственная база</h4>
+                <p>Более 200 проверенных грузчиков и разнорабочих в штате</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h4>Официально</h4>
+                <p>Работаем по договору, соблюдаем ТК РФ, несём ответственность</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                <h4>Быстрая замена</h4>
+                <p>Если сотрудник не подошёл — заменим в течение смены без доплат</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h4>Контроль качества</h4>
+                <p>Наши Менеджеры и диспетчера контролируют выполнение задач и соблюдение сроков</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Подробный прайс-лист -->
+<section class="section" style="padding-top: 0;">
+    <div class="container">
+        <div class="pricing-table">
+            <h3 style="margin-bottom: 24px; font-size: 24px;">Актуальные ставки на 2026 год (Екатеринбург)</h3>
+            <div class="pricing-row">
+                <span class="pricing-service">Грузчики (погрузка/разгрузка)</span>
+                <span class="pricing-value">500 ₽/час</span>
+            </div>
+            <div class="pricing-row">
+                <span class="pricing-service">Разнорабочие (стройка/демонтаж)</span>
+                <span class="pricing-value">650 ₽/час</span>
+            </div>
+            <div class="pricing-row">
+                <span class="pricing-service">Комплектовщики / упаковщики</span>
+                <span class="pricing-value">550 ₽/час</span>
+            </div>
+            <div class="pricing-row">
+                <span class="pricing-service">Стикеровщики / маркировщики</span>
+                <span class="pricing-value">550 ₽/час</span>
+            </div>
+            <div class="pricing-row">
+                <span class="pricing-service">Бригадир / старший смены</span>
+                <span class="pricing-value">договорная</span>
+            </div>
+            <p class="pricing-note"><i class="fas fa-info-circle"></i> Точная стоимость рассчитывается после уточнения объёма и условий. Минимальная смена — 4 часа. НДС не облагается (УСН).</p>
+        </div>
+    </div>
+</section>
+
+<!-- Клиенты -->
+<section class="section" style="padding-top: 0;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Нам доверяют</h2>
+        </div>
+        <div class="clients-logos">
+            <span class="client-logo">Ашан</span>
+            <span class="client-logo">ТК "ПЭК"</span>
+            <span class="client-logo">ТК "Энергия"</span>
+            <span class="client-logo">ПауэрИнтернешнлШины</span>
+            <span class="client-logo">Автошинснаб</span>
+        </div>
+    </div>
+</section>
+
+<!-- Контакты + форма -->
+<section id="contact" class="section">
+    <div class="container">
+        <div class="contacts-grid">
+            <div class="contact-info">
+                <h3>Контакты в Екатеринбурге</h3>
+                <div class="contact-detail">
+                    <i class="fas fa-map-pin"></i>
+                    <span>г. Екатеринбург, ул. Кузнецова, 2Б, БЦ ASK</span>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="tel:+73432669383">+7 (961) 768-01-31</a>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:info@rabotaem24.ru">info@rabotaem24.ru</a>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-clock"></i>
+                    <span>Пн–Пт 9:00–18:00, заявки принимаем круглосуточно</span>
+                </div>
+                <div class="map-placeholder">
+                    <i class="fas fa-map" style="font-size: 48px; margin-bottom: 10px; display: block;"></i>
+                    Яндекс.Карта: г.Екатеринбург, ул. Кузнецова, 2Б
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3 style="color:#1E2A41; margin-bottom: 20px;">Оставьте заявку на расчет</h3>
+                <form id="leadForm" action="https://formsubmit.co/mugtasimoff.r@yandex.ru" method="POST">
+                    <input type="hidden" name="_subject" value="Новая заявка с сайта Работаем24!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Телефон" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="3" placeholder="Какие специалисты нужны? Объём работ?"></textarea>
+                    </div>
+                    <button type="submit" class="btn form-btn">Отправить заявку</button>
+                    <p style="font-size: 12px; margin-top: 16px; color: #5B6F88;">Нажимая кнопку, вы соглашаетесь с обработкой данных</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Футер -->
+<footer class="footer">
+    <div class="container footer-content">
+        <div>© 2026 Работаем24. Аутсорсинг персонала в Екатеринбурге</div>
+        <div class="footer-links">
+            <a href="#">Политика конфиденциальности</a>
+            <a href="#">Реквизиты</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function() {
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === "#") return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Калькулятор
+        const typeSelect = document.getElementById('calcType');
+        const peopleInput = document.getElementById('calcPeople');
+        const hoursInput = document.getElementById('calcHours');
+        const shiftsInput = document.getElementById('calcShifts');
+        const totalSpan = document.getElementById('totalPrice');
+        const breakdownDiv = document.getElementById('breakdown');
+
+        function updateCalculator() {
+            const rate = parseInt(typeSelect.value);
+            const people = parseInt(peopleInput.value) || 1;
+            const hours = parseInt(hoursInput.value) || 1;
+            const shifts = parseInt(shiftsInput.value) || 1;
+            
+            const total = rate * people * hours * shifts;
+            totalSpan.textContent = total.toLocaleString('ru-RU');
+            
+            const typeText = typeSelect.options[typeSelect.selectedIndex].text.split(' ')[0];
+            breakdownDiv.innerHTML = `${people} чел × ${hours} ч × ${shifts} смена × ${rate} ₽`;
+        }
+
+        typeSelect.addEventListener('change', updateCalculator);
+        peopleInput.addEventListener('input', updateCalculator);
+        hoursInput.addEventListener('input', updateCalculator);
+        shiftsInput.addEventListener('input', updateCalculator);
+        updateCalculator();
+
+        // Демо-обработчик формы
+        const form = document.getElementById('leadForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                if (form.action.includes('formsubmit.co') && form.action.includes('ваша_почта')) {
+                    e.preventDefault();
+                    alert('Настройте форму! Замените "ваша_почта@example.com" на ваш реальный email в атрибуте action формы. Или используйте Telegram-бота.');
+                }
+            });
+        }
+    })();
+</script>
+
+</body>
+</html>
